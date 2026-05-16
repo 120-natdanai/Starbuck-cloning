@@ -347,9 +347,9 @@ hr { border: none; }
 }
 
 /* ========================================================
-   TABLET — min-width: 600px
+   TABLET — min-width: 768px
    ======================================================== */
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar { padding: 0 32px; }
 
   .hero-bar {
