@@ -1,19 +1,4 @@
 /* ================================
-   CSS VARIABLES
-   ================================ */
-:root {
-  --color-navy:      #060626;
-  --color-dark:       #0C0D1F;
-  --color-black:      #1e1e1e;
-  --color-white:      #ffffff;
-  --color-gray:       #f2f0eb;
-  --color-yellow:       #FAEBD7;
-  --color-text:       #333333;
-  --navbar-height:    64px;
-}
-
-
-/* ================================
    RESET
    ================================ */
 *, *::before, *::after {
@@ -24,8 +9,8 @@
 
 body {
   font-family: 'Georgia', serif;
-  color: var(--color-text);
-  background: var(--color-white);
+  color: #333333;
+  background: #ffffff;
 }
 
 img {
@@ -42,7 +27,6 @@ a {
 ul { list-style: none; }
 hr { border: none; }
 
-
 /* ================================
    BUTTONS
    ================================ */
@@ -57,52 +41,48 @@ hr { border: none; }
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* ปุ่มบน hero-bar (พื้นหลังเขียว) */
 .btn--outline-light {
-  border-color: var(--color-white);
-  color: var(--color-white);
+  border-color: #ffffff;
+  color: #ffffff;
   background: transparent;
 }
 .btn--outline-light:hover {
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: #ffffff;
+  color: #0C0D1F;
 }
 
-/* ปุ่มบน card (พื้นหลังเขียว) */
 .btn--outline-dark {
-  border-color: var(--color-white);
-  color: var(--color-white);
+  border-color: #ffffff;
+  color: #ffffff;
   background: transparent;
 }
 .btn--outline-dark:hover {
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: #ffffff;
+  color: #0C0D1F;
 }
 
-/* ปุ่มใน navbar */
 .btn--outline {
-  border-color: var(--color-black);
-  color: var(--color-black);
+  border-color: #1e1e1e;
+  color: #1e1e1e;
   background: transparent;
 }
 .btn--outline:hover {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: #1e1e1e;
+  color: #ffffff;
 }
 
 .btn--solid {
-  background: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
+  background: #1e1e1e;
+  color: #ffffff;
+  border-color: #1e1e1e;
 }
 .btn--solid:hover {
-  background: var(--color-navy);
-  border-color: var(--color-navy);
+  background: #060626;
+  border-color: #060626;
 }
 
-
 /* ================================
-   NAVBAR — mobile first
+   NAVBAR — mobile 
    ================================ */
 .nav-toggle { display: none; }
 
@@ -113,16 +93,16 @@ hr { border: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--navbar-height);
+  height: 64px; /* แทนค่าจาก --navbar-height */
   padding: 0 20px;
-  background: var(--color-white);
+  background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
 }
 
 .navbar__logo img {
   width: 44px;
   height: 44px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -140,11 +120,11 @@ hr { border: none; }
 .navbar__hamburger span {
   display: block;
   height: 2px;
-  background: var(--color-black);
+  background: #1e1e1e;
   border-radius: 2px;
 }
 
-/* ===== Overlay (กดข้างนอกปิด) ===== */
+/* ===== Overlay ===== */
 .navbar__overlay {
   display: none;
   position: fixed;
@@ -154,7 +134,7 @@ hr { border: none; }
   cursor: pointer;
 }
 
-/* ===== Slide-in menu panel ===== */
+/* ===== Slide-in menu panel (ฝั่งขวา) ===== */
 .navbar__menu {
   position: fixed;
   top: 0;
@@ -162,13 +142,13 @@ hr { border: none; }
   width: 80%;
   max-width: 320px;
   height: 100vh;
-  background: var(--color-white);
+  background: #ffffff;
   z-index: 300;
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 24px 32px;
-  transform: translateX(100%);   /* ซ่อนไว้ซ้าย */
+  transform: translateX(100%);
   transition: transform 0.3s ease;
 }
 
@@ -176,25 +156,18 @@ hr { border: none; }
   font-size: 1rem;
   font-weight: bold;
 }
-
-.navbar__menu a:hover { color: var(--color-navy); }
+.navbar__menu a:hover { color: #060626; }
 
 .navbar__divider {
   border-top: 1px solid #e0e0e0;
 }
 
-/* ปุ่ม X ปิด menu */
 .navbar__close {
-  align-self: flex-end;
+  align-self: flex-start;
   font-size: 1.8rem;
   cursor: pointer;
   line-height: 1;
-  color: var(--color-black);
-}
-
-.navbar__findstore {
-  font-size: 0.9rem;
-  color: #555;
+  color: #1e1e1e;
 }
 
 /* ===== เมื่อ checkbox checked ===== */
@@ -205,15 +178,14 @@ hr { border: none; }
 .navbar__desktop        { display: none; }
 .navbar__desktop-actions { display: none; }
 
-
 /* ================================
    HERO BAR
    ================================ */
 .hero-bar {
-  background: var(--color-dark);
-  color: var(--color-white);
+  background: #0C0D1F;
+  color: #ffffff;
   display: flex;
-  flex-direction: column;    /* Mobile: stack */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
@@ -226,39 +198,32 @@ hr { border: none; }
   font-weight: bold;
 }
 
-
 /* ================================
-   CARDS — Mobile: stack (รูปบน text ล่าง)
+   CARDS — Mobile
    ================================ */
 .cards { display: flex; flex-direction: column; }
 
 .card {
   display: flex;
-  flex-direction: column;    /* Mobile: รูปบน text ล่าง */
-  background: var(--color-navy);
-  color: var(--color-white);
+  flex-direction: column;
+  background: #060626;
+  color: #ffffff;
 }
 
-/* ========================================================
-   สไตล์พิเศษสำหรับ 2 Cards ล่าง (ที่ใส่คลาส .card--light)
-   ======================================================== */
 .card--light {
-  background: var(--color-yellow); /* เปลี่ยนพื้นหลังเป็นสีเทาอ่อน (หรือสีอื่นที่คุณชอบ) */
-  color: var(--color-black);    /* เปลี่ยนสีตัวอักษรหลักเป็นสีเข้มเพื่อให้ขัดกับพื้นหลัง */
+  background: #FAEBD7;
+  color: #1e1e1e;
 }
 
-/* ปรับสีปุ่มภายใน Card ล่างให้เข้ากับพื้นหลังใหม่ */
 .card--light .btn--outline-dark {
-  border-color: var(--color-black);
-  color: var(--color-black);
+  border-color: #1e1e1e;
+  color: #1e1e1e;
 }
-
 .card--light .btn--outline-dark:hover {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: #1e1e1e;
+  color: #ffffff;
 }
 
-/* card body ต้อง flex: 1 เพื่อยืดเต็มความสูงที่เหลือ */
 .card__body {
   padding: 40px 32px;
   display: flex;
@@ -267,66 +232,42 @@ hr { border: none; }
   text-align: center;
   justify-content: center;
   align-items: center;
-  
-  /* เพิ่มส่วนนี้เพื่อให้เนื้อหาภายใน Card จัดเรียงตรงกลางอย่างสวยงาม */
   width: 100%; 
 }
 
-
-/* card--reverse บน mobile ก็ยังเป็น column เหมือนกัน */
 .card--reverse { flex-direction: column; }
-
 .card__image {
   width: 100%;
   height: 280px;
 }
 
-.card__body {
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
 .card__title {
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
 }
 
 .card__desc {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.7;
   opacity: 0.9;
 }
-
 
 /* ================================
    FOOTNOTE
    ================================ */
 .footnote {
   padding: 24px 20px;
-  font-size: 0.8rem;
-  color: #555;
+  font-size: 0.9rem;
   text-align: center;
   line-height: 1.6;
-  border-top: 1px solid #e0e0e0;
 }
-
 
 /* ================================
-   FOOTER — Mobile: accordion
+   FOOTER — Mobile 
    ================================ */
 .footer {
-  background: var(--color-white);
+  background: #ffffff;
   padding: 32px 20px 24px;
   border-top: 1px solid #e0e0e0;
-}
-
-/* details/summary accordion */
-.footer__group {
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .footer__heading {
@@ -336,41 +277,31 @@ hr { border: none; }
   padding: 16px 0;
   font-size: 0.95rem;
   font-weight: bold;
-  cursor: pointer;
-  list-style: none;          /* ซ่อน default triangle */
-  color: var(--color-black);
+  cursor: default;
+  pointer-events: none; 
+  color: #1e1e1e;
 }
 
-/* ซ่อน default arrow บน webkit */
-.footer__heading::-webkit-details-marker { display: none; }
-
-/* ใส่ลูกศร custom ด้วย ::after */
 .footer__heading::after {
-  content: '\203A';          /* › */
+  content: '\203A';
   font-size: 1.2rem;
   transform: rotate(90deg);
   display: inline-block;
-  transition: transform 0.3s;
-}
-
-details[open] > .footer__heading::after {
-  transform: rotate(-90deg); /* หมุนเป็น ˅ เมื่อเปิด */
 }
 
 .footer__list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 0 0 16px 0;
+  display: none; 
 }
 
 .footer__list a {
-  font-size: 0.9rem;
-  color: #555;
-  transition: color 0.2s;
+  color: #737373;              
+  font-size: 1rem;           
+  transition: color 0.2s ease; 
 }
 
-.footer__list a:hover { color: var(--color-black); }
+.footer__list a:hover {
+  color: #1e1e1e;
+}
 
 /* Social icons */
 .footer__social {
@@ -385,8 +316,8 @@ details[open] > .footer__heading::after {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--color-black);
-  color: var(--color-white);
+  background: #1e1e1e;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -395,9 +326,6 @@ details[open] > .footer__heading::after {
   transition: background 0.2s;
 }
 
-.footer__social a:hover { background: var(--color-navy); }
-
-/* Legal links — แนวตั้งบน mobile */
 .footer__legal {
   display: flex;
   flex-direction: column;
@@ -410,23 +338,18 @@ details[open] > .footer__heading::after {
   color: #555;
   transition: color 0.2s;
 }
-
-.footer__legal a:hover { color: var(--color-black); }
+.footer__legal a:hover { color: #1e1e1e; }
 
 .footer__copy {
   font-size: 0.8rem;
   color: #888;
   padding-top: 16px;
-  border-top: 1px solid #e0e0e0;
 }
-
 
 /* ========================================================
    TABLET — min-width: 600px
-   (ควบคุมหน้าจอแท็บเล็ต ให้ฟุตเตอร์หุบเป็น Accordion เหมือนมือถือ)
    ======================================================== */
 @media (min-width: 600px) {
-
   .navbar { padding: 0 32px; }
 
   .hero-bar {
@@ -435,7 +358,6 @@ details[open] > .footer__heading::after {
     padding: 20px 32px;
   }
 
-  /* card: รูป 50% + text 50% แนวนอน */
   .card { flex-direction: row; }
   .card--reverse { flex-direction: row-reverse; }
 
@@ -458,26 +380,15 @@ details[open] > .footer__heading::after {
     margin-left: auto;
     margin-right: auto;
   }
-
-  /* ปล่อยให้สไตล์ยุบขยายทำงานบน Tablet โดยคงเหลือแค่สไตล์ Legal links แนวนอน */
-  .footer__social { border-top: 1px solid #e0e0e0; }
-
-
-} /* <-- ปิดปีกกาของ Tablet */
-
+}
 
 /* ========================================================
    DESKTOP — min-width: 1024px
-   (ควบคุมหน้าจอคอมพิวเตอร์ ให้กางฟุตเตอร์ออกเป็น 5 คอลัมน์ทันที)
    ======================================================== */
 @media (min-width: 1024px) {
-
   .navbar { padding: 0 48px; }
-
-  /* ซ่อน hamburger บน desktop */
   .navbar__hamburger { display: none; }
-
-  /* แสดง desktop nav */
+  
   .navbar__desktop {
     display: flex;
     gap: 32px;
@@ -486,8 +397,7 @@ details[open] > .footer__heading::after {
     margin-left: 32px;   
     margin-right: auto;  
   }
-
-  .navbar__desktop a:hover { color: var(--color-navy); }
+  .navbar__desktop a:hover { color: #060626; }
 
   .navbar__desktop-actions {
     display: flex;
@@ -495,12 +405,6 @@ details[open] > .footer__heading::after {
     gap: 16px;
   }
 
-  .navbar__findstore--desktop {
-    font-size: 0.85rem;
-    color: #555;
-  }
-
-  /* Layout ขยายเต็มจอแบนชิดขอบ และเว้นระยะห่างบนล่าง */
   .hero-bar, .cards {
     max-width: 100%;
     width: 100%;
@@ -509,9 +413,6 @@ details[open] > .footer__heading::after {
   }
 
   .hero-bar { 
-    margin-top: 0;       
-    margin-bottom: 0;    
-    border-radius: 0;    
     padding: 24px 48px; 
   }
 
@@ -521,23 +422,12 @@ details[open] > .footer__heading::after {
     margin-bottom: 40px; 
   }
 
-  .card {
-    border-radius: 0;    
-  }
-
+  .card { border-radius: 0; }
   .card__image { height: 480px; }
+  .card__body { padding: 80px 72px; }
 
-  .card__body { 
-    padding: 80px 72px; 
-    justify-content: center; 
-    align-items: center; 
-  }
+  .footer { padding: 60px 48px 40px; }
 
-  .footer { 
-    padding: 60px 48px 40px; 
-  }
-
-  /* สั่งแผ่เป็น 5 คอลัมน์แนวตั้งขนานกัน */
   .footer__nav {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
@@ -545,33 +435,24 @@ details[open] > .footer__heading::after {
     margin-bottom: 32px;
   }
 
-  .footer__group {
-    border-bottom: none; /* เอาเส้นคั่นในมือถือออก */
-  }
-
-  /* 💡 จุดสำคัญ: สั่งบังคับให้ลิสต์ (ul) แสดงออกมาตรง ๆ เลย ไม่ต้องง้อสถานะกดคลิกของ details */
   .footer__list {
-    display: flex !important;   /* ปลดล็อกการโดนซ่อนของแท็ก <details> */
-    flex-direction: column;     /* เรียงลิงก์ต่อกันเป็นแนวตั้งลงมา */
+    display: flex !important;   
+    flex-direction: column;     
     gap: 12px;
     padding-top: 12px;
   }
 
-  /* จัดหัวข้อให้อยู่ในสภาพตัวอักษรธรรมดา ไม่ใช่ปุ่มกด */
   .footer__heading {
     padding: 0;
-    cursor: default;
-    pointer-events: none;       /* ล็อกไว้ไม่ให้ผู้ใช้คลิกหุบบน Desktop */
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #333;                
+    color: #333333;                
     font-weight: bold;
     display: block;             
   }
 
-  /* ซ่อนลูกศร › ออกไปจากหน้าจอ Desktop */
   .footer__heading::after { 
     display: none !important; 
   }
-} /* <-- ปิดปีกกาของ Desktop */
+}
