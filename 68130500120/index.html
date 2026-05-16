@@ -9,128 +9,211 @@
 <body>
 
     <!-- ====HEADER==== -->
-    <header>
-        <div class="logo-img">
+    <header class="navbar">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <a href="#" class="navbar__logo">
             <img src="images/logo.png" alt="brand logo">
-        </div>
+        </a>
         <label for="nav-toggle" class="navbar__hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
 
-    <nav class="navbar__menu">
-      <a href="#">CHARACTERS</a>
-      <a href="#">STORY</a>
-      <a href="#">GALLERY</a>
-      <a href="#" class="btn btn--outline">My Portfolio</a>
-      <a href="#" class="btn btn--solid">Donate</a>
-    </nav>
+    <!-- Overlay backdrop (กดข้างนอกปิด menu) -->
+        <label for="nav-toggle" class="navbar__overlay"></label>
+
+        <!-- Slide-in menu panel -->
+        <nav class="navbar__menu">
+            <!-- ปุ่ม X ปิด -->
+            <label for="nav-toggle" class="navbar__close">&times;</label>
+
+            <a href="#">Menu</a>
+            <a href="#">Story</a>
+            <a href="#">Gallery</a>
+            <hr class="navbar__divider">
+            <a href="#" class="btn btn--outline">My Portfolio</a>
+            <a href="#" class="btn btn--solid">Donate</a>
+            <a href="#" class="navbar__findstore">Blazing Sun</a>
+        </nav>
+
+        <!-- Desktop links (แสดงเฉพาะ desktop) -->
+        <nav class="navbar__desktop">
+            <a href="#">Menu</a>
+            <a href="#">Story</a>
+            <a href="#">Gallery</a>
+        </nav>
+
+        <div class="navbar__desktop-actions">
+            <a href="#" class="navbar__findstore--desktop">Blazing Sun</a>
+            <a href="#" class="btn btn--outline">My Portfolio</a>
+            <a href="#" class="btn btn--solid">Donate</a>
+        </div>
+
     </header>
     <!-- ====END-OF-HEADER==== -->
-    
-    <!-- =====HERO===== -->
-    <section class="hero">
-        <img src="images/hero.jpg" alt="Hero" class="hero__image" />
-        <div class="hero__content">
-        <h1 class="hero__title">It's a date, Mydeimos</h1>
-        <a href="#" class="btn btn--solid">Yes, deliverer</a>
-        </div>
-    </section>
-    <!-- ====END-OF-HERO==== -->
 
 
-    <!-- =====CARDS===== -->
+    <!-- ====HERO BAR==== -->
+    <!-- แถบสีเขียวบางๆ text + button แนวนอน เหมือน Starbucks -->
+    <div class="hero-bar">
+        <span class="hero-bar__text">It's a date, Mydeimos</span>
+        <a href="#" class="btn btn--outline-light">Yes, deliverer</a>
+    </div>
+    <!-- ====END-OF-HERO-BAR==== -->
+
+
+    <!-- ====CARDS==== -->
+    <!-- แต่ละ card คือ row เต็มหน้าจอ รูปสลับซ้าย-ขวา บน desktop -->
     <section class="cards">
 
-        <article class="card">
-        <img src="images/card1.jpg" alt="Product 1" class="card__image" />
-        <div class="card__body">
-            <h2 class="card__title">Appearance</h2>
-            <p class="card__desc">
-                Phainon is a tall, well-built man with neck-length messy white hair and bright cyan eyes. 
-                On his neck, he has a brown leather choker covering a yellow mark in the shape of a sun. 
-                His outfit consists of a large, ankle-length, brown and white trench coat, 
-                with golden highlights appearing throughout.
-            </p>
-            <a href="#" class="btn btn--outline">VIEW DETAILS</a>
-        </div>
+        <!-- card 1: รูปซ้าย text ขวา -->
+        <article class="card card--light">
+            <img src="images/appearance.webp" alt="Appearance" class="card__image" />
+            <div class="card__body">
+                <h2 class="card__title">Appearance</h2>
+                <p class="card__desc">
+                    Phainon is a tall, well-built man with neck-length messy white hair and bright cyan eyes.
+                    On his neck, he has a brown leather choker covering a yellow mark in the shape of a sun.
+                </p>
+                <a href="#" class="btn btn--outline-dark">View Details</a>
+            </div>
         </article>
 
-        <article class="card">
-        <img src="images/card2.jpg" alt="Product 2" class="card__image" />
-        <div class="card__body">
-            <h2 class="card__title">Personality & Traits</h2>
-            <p class="card__desc">When 2 p.m. hits and you need a little boost, we've got you covered.</p>
-            <a href="#" class="btn btn--outline">Explore menu</a>
-        </div>
+        <!-- card 2: text ซ้าย รูปขวา (reverse) -->
+        <article class="card card--reverse card--light">
+            <img src="images/coreflame.jpg" alt="Personality" class="card__image" />
+            <div class="card__body">
+                <h2 class="card__title">Personality &amp; Traits</h2>
+                <p class="card__desc">
+                    Calm and collected on the surface, yet hiding a storm within.
+                    His loyalty runs deep, and his words carry the weight of centuries.
+                </p>
+                <a href="#" class="btn btn--outline-dark">Explore</a>
+            </div>
         </article>
 
+        <!-- card 3: รูปซ้าย text ขวา -->
         <article class="card">
-        <img src="images/card3.jpg" alt="Product 3" class="card__image" />
-        <div class="card__body">
-            <h2 class="card__title">Specialities</h2>
-            <p class="card__desc">Iced Mango Cream Matcha and rich Iced Mango Cream Chai.</p>
-            <a href="#" class="btn btn--outline">Order now</a>
-        </div>
+            <img src="images/sun_guy.webp" alt="Specialities" class="card__image" />
+            <div class="card__body">
+                <h2 class="card__title">Specialities</h2>
+                <p class="card__desc">
+                    Master of celestial arts and bearer of the sun's blessing.
+                    His power manifests as blinding light and searing heat.
+                </p>
+                <a href="#" class="btn btn--outline-dark">Learn More</a>
+            </div>
         </article>
 
-        <article class="card">
-        <img src="images/card4.jpg" alt="Product 4" class="card__image" />
-        <div class="card__body">
-            <h2 class="card__title">Odyssey</h2>
-            <p class="card__desc">Iced Lavender Cream Matcha is back in bloom.</p>
-            <a href="#" class="btn btn--outline">See the menu</a>
-        </div>
+        <!-- card 4: text ซ้าย รูปขวา (reverse) -->
+        <article class="card card--reverse">
+            <img src="images/new_cycle.webp" alt="Odyssey" class="card__image" />
+            <div class="card__body">
+                <h2 class="card__title">Odyssey</h2>
+                <p class="card__desc">
+                    A journey across realms, chasing a name whispered only in dreams.
+                    Every step brings him closer — or further — from the truth.
+                </p>
+                <a href="#" class="btn btn--outline-dark">Read the Story</a>
+            </div>
         </article>
 
     </section>
     <!-- ====END-OF-CARDS==== -->
 
 
-    <!-- =====FOOTER===== -->
+    <!-- ====FOOTNOTE==== -->
+    <p class="footnote">
+        * All characters and stories are fictional. Read responsibly and support your lovely game.
+    </p>
+    <!-- ====END-OF-FOOTNOTE==== -->
+
+
+    <!-- ====FOOTER==== -->
     <footer class="footer">
-        <div class="footer__grid">
 
-        <div class="footer__col">
-            <h3 class="footer__heading">About Us</h3>
-            <ul class="footer__list">
-            <li><a href="#">Our Company</a></li>
-            <li><a href="#">Our Coffee</a></li>
-            <li><a href="#">Stories &amp; News</a></li>
-            </ul>
+        <!-- Desktop: grid 5 col | Mobile: accordion ด้วย details/summary -->
+        <nav class="footer__nav">
+
+            <!-- Col 1 -->
+            <details class="footer__group">
+                <summary class="footer__heading">About Us</summary>
+                <ul class="footer__list">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Art</a></li>
+                    <li><a href="#">News &amp; Updates</a></li>
+                    <li><a href="#">Archive</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </details>
+
+            <!-- Col 2 -->
+            <details class="footer__group">
+                <summary class="footer__heading">Phainon</summary>
+                <ul class="footer__list">
+                    <li><a href="#">Appearance</a></li>
+                    <li><a href="#">Personality</a></li>
+                    <li><a href="#">Specialties</a></li>
+                    <li><a href="#">Background History</a></li>
+                </ul>
+            </details>
+
+            <!-- Col 3 -->
+            <details class="footer__group">
+                <summary class="footer__heading">Mydei</summary>
+                <ul class="footer__list">
+                    <li><a href="#">Appearance</a></li>
+                    <li><a href="#">Personality</a></li>
+                    <li><a href="#">Specialties</a></li>
+                    <li><a href="#">Background History</a></li>
+                </ul>
+            </details>
+
+            <!-- Col 4 -->
+            <details class="footer__group">
+                <summary class="footer__heading">Dan Heng</summary>
+                <ul class="footer__list">
+                    <li><a href="#">Appearance</a></li>
+                    <li><a href="#">Personality</a></li>
+                    <li><a href="#">Specialties</a></li>
+                    <li><a href="#">Background History</a></li>
+                </ul>
+            </details>
+
+            <!-- Col 5 -->
+            <details class="footer__group">
+                <summary class="footer__heading">Caelus</summary>
+                <ul class="footer__list">
+                    <li><a href="#">Appearance</a></li>
+                    <li><a href="#">Personality</a></li>
+                    <li><a href="#">Specialties</a></li>
+                    <li><a href="#">Background History</a></li>
+                </ul>
+            </details>
+
+        </nav>
+
+        <!-- Social icons -->
+        <div class="footer__social">
+            <a href="#" aria-label="Spotify">&#9679;</a>
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Pinterest">P</a>
+            <a href="#" aria-label="Instagram">&#9678;</a>
+            <a href="#" aria-label="YouTube">&#9654;</a>
+            <a href="#" aria-label="X">X</a>
         </div>
 
-        <div class="footer__col">
-            <h3 class="footer__heading">Careers</h3>
-            <ul class="footer__list">
-            <li><a href="#">Culture &amp; Values</a></li>
-            <li><a href="#">Inclusion &amp; Diversity</a></li>
-            <li><a href="#">College &amp; University</a></li>
-            </ul>
-        </div>
+        <!-- Legal links -->
+        <ul class="footer__legal">
+            <li><a href="#">Privacy Notice</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Cookie Preferences</a></li>
+            <li><a href="#">Accessibility</a></li>
+        </ul>
 
-        <div class="footer__col">
-            <h3 class="footer__heading">Social Impact</h3>
-            <ul class="footer__list">
-            <li><a href="#">People</a></li>
-            <li><a href="#">Planet</a></li>
-            <li><a href="#">Environmental Goals</a></li>
-            </ul>
-        </div>
+        <p class="footer__copy">&copy; 2026 Yaoi. All rights reserved.</p>
 
-        <div class="footer__col">
-            <h3 class="footer__heading">For Business</h3>
-            <ul class="footer__list">
-            <li><a href="#">Landlord Support</a></li>
-            <li><a href="#">Office &amp; Hotel</a></li>
-            <li><a href="#">Corporate Gifts</a></li>
-            </ul>
-        </div>
-
-        </div>
-
-        <p class="footer__copy">&copy; 2026 Starbucks Coffee Company. All rights reserved.</p>
     </footer>
     <!-- ====END-OF-FOOTER==== -->
 

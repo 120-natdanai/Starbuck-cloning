@@ -1,4 +1,593 @@
-/* ====HEADER==== */
-.logo-img > img {
-    max-width: 30%;
+/* ================================
+   CSS VARIABLES
+   ================================ */
+:root {
+  --color-navy:      #060626;
+  --color-dark:       #0C0D1F;
+  --color-black:      #1e1e1e;
+  --color-white:      #ffffff;
+  --color-gray:       #f2f0eb;
+  --color-yellow:       #FAEBD7;
+  --color-text:       #333333;
+  --navbar-height:    64px;
+}
+
+
+/* ================================
+   RESET
+   ================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  color: var(--color-text);
+  background: var(--color-white);
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul { list-style: none; }
+hr { border: none; }
+
+
+/* ================================
+   BUTTONS
+   ================================ */
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* ปุ่มบน hero-bar (พื้นหลังเขียว) */
+.btn--outline-light {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background: transparent;
+}
+.btn--outline-light:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+/* ปุ่มบน card (พื้นหลังเขียว) */
+.btn--outline-dark {
+  border-color: var(--color-white);
+  color: var(--color-white);
+  background: transparent;
+}
+.btn--outline-dark:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+/* ปุ่มใน navbar */
+.btn--outline {
+  border-color: var(--color-black);
+  color: var(--color-black);
+  background: transparent;
+}
+.btn--outline:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn--solid {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+.btn--solid:hover {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+
+/* ================================
+   NAVBAR — mobile first
+   ================================ */
+.nav-toggle { display: none; }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding: 0 20px;
+  background: var(--color-white);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar__logo img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+/* ===== Hamburger (3 เส้น) ===== */
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 300;
+}
+
+.navbar__hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--color-black);
+  border-radius: 2px;
+}
+
+/* ===== Overlay (กดข้างนอกปิด) ===== */
+.navbar__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 250;
+  cursor: pointer;
+}
+
+/* ===== Slide-in menu panel ===== */
+.navbar__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--color-white);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px 32px;
+  transform: translateX(-100%);   /* ซ่อนไว้ซ้าย */
+  transition: transform 0.3s ease;
+}
+
+.navbar__menu a {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.navbar__menu a:hover { color: var(--color-navy); }
+
+.navbar__divider {
+  border-top: 1px solid #e0e0e0;
+}
+
+/* ปุ่ม X ปิด menu */
+.navbar__close {
+  align-self: flex-end;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  color: var(--color-black);
+}
+
+.navbar__findstore {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ===== เมื่อ checkbox checked ===== */
+.nav-toggle:checked ~ .navbar__overlay { display: block; }
+.nav-toggle:checked ~ .navbar__menu   { transform: translateX(0); }
+
+/* ===== Desktop nav (ซ่อนบน mobile) ===== */
+.navbar__desktop        { display: none; }
+.navbar__desktop-actions { display: none; }
+
+
+/* ================================
+   HERO BAR
+   ================================ */
+.hero-bar {
+  background: var(--color-dark);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;    /* Mobile: stack */
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.hero-bar__text {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: bold;
+}
+
+
+/* ================================
+   CARDS — Mobile: stack (รูปบน text ล่าง)
+   ================================ */
+.cards { display: flex; flex-direction: column; }
+
+.card {
+  display: flex;
+  flex-direction: column;    /* Mobile: รูปบน text ล่าง */
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* ========================================================
+   สไตล์พิเศษสำหรับ 2 Cards ล่าง (ที่ใส่คลาส .card--light)
+   ======================================================== */
+.card--light {
+  background: var(--color-yellow); /* เปลี่ยนพื้นหลังเป็นสีเทาอ่อน (หรือสีอื่นที่คุณชอบ) */
+  color: var(--color-black);    /* เปลี่ยนสีตัวอักษรหลักเป็นสีเข้มเพื่อให้ขัดกับพื้นหลัง */
+}
+
+/* ปรับสีปุ่มภายใน Card ล่างให้เข้ากับพื้นหลังใหม่ */
+.card--light .btn--outline-dark {
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.card--light .btn--outline-dark:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* card body ต้อง flex: 1 เพื่อยืดเต็มความสูงที่เหลือ */
+.card__body {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  /* เพิ่มส่วนนี้เพื่อให้เนื้อหาภายใน Card จัดเรียงตรงกลางอย่างสวยงาม */
+  width: 100%; 
+}
+
+
+/* card--reverse บน mobile ก็ยังเป็น column เหมือนกัน */
+.card--reverse { flex-direction: column; }
+
+.card__image {
+  width: 100%;
+  height: 280px;
+}
+
+.card__body {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__title {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+}
+
+.card__desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+
+/* ================================
+   FOOTNOTE
+   ================================ */
+.footnote {
+  padding: 24px 20px;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+  border-top: 1px solid #e0e0e0;
+}
+
+
+/* ================================
+   FOOTER — Mobile: accordion
+   ================================ */
+.footer {
+  background: var(--color-white);
+  padding: 32px 20px 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* details/summary accordion */
+.footer__group {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.footer__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;          /* ซ่อน default triangle */
+  color: var(--color-black);
+}
+
+/* ซ่อน default arrow บน webkit */
+.footer__heading::-webkit-details-marker { display: none; }
+
+/* ใส่ลูกศร custom ด้วย ::after */
+.footer__heading::after {
+  content: '\203A';          /* › */
+  font-size: 1.2rem;
+  transform: rotate(90deg);
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+details[open] > .footer__heading::after {
+  transform: rotate(-90deg); /* หมุนเป็น ˅ เมื่อเปิด */
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 0 16px 0;
+}
+
+.footer__list a {
+  font-size: 0.9rem;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.footer__list a:hover { color: var(--color-black); }
+
+/* Social icons */
+.footer__social {
+  display: flex;
+  gap: 16px;
+  padding: 24px 0 20px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 8px;
+}
+
+.footer__social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.footer__social a:hover { background: var(--color-navy); }
+
+/* Legal links — แนวตั้งบน mobile */
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+.footer__legal a {
+  font-size: 0.85rem;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.footer__legal a:hover { color: var(--color-black); }
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: #888;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+
+/* ================================
+   TABLET — min-width: 600px
+   ================================ */
+@media (min-width: 600px) {
+
+  .navbar { padding: 0 32px; }
+
+  .hero-bar {
+    flex-direction: row;       /* Tablet: text + button แนวนอน */
+    gap: 24px;
+    padding: 20px 32px;
+  }
+
+  /* card: รูป 50% + text 50% แนวนอน */
+  .card { flex-direction: row; }
+
+  /* card--reverse: text ก่อน รูปหลัง */
+  .card--reverse { flex-direction: row-reverse; }
+
+  .card__image {
+    width: 50%;
+    height: 400px;
+  }
+
+  .card__body {
+    width: 50%;
+    padding: 60px 56px;
+    justify-content: center;
+    /* เปลี่ยนจากคำสั่งเดิมให้เนื้อหาจัดอยู่กึ่งกลางและเว้นขอบสวยงามแบบ Starbucks */
+    align-items: center; 
+    text-align: center;
+  }
+  
+
+
+  .footer__social { border-top: 1px solid #e0e0e0; }
+
+  /* Legal links แนวนอนบน tablet+ */
+  .footer__legal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+}
+
+
+/* ================================
+   DESKTOP — min-width: 1024px
+   ================================ */
+@media (min-width: 1024px) {
+
+  /* ให้ Navbar มีขอบด้านข้างเท่าเดิมเพื่อความสวยงาม หรือจะเปลี่ยนตามเนื้อหาก็ได้ */
+  .navbar { padding: 0 48px; }
+
+  /* ซ่อน hamburger บน desktop */
+  .navbar__hamburger { display: none; }
+
+  /* แสดง desktop nav — ชิดซ้ายถัดจาก logo */
+  .navbar__desktop {
+    display: flex;
+    gap: 32px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-left: 32px;
+    margin-right: auto;
+  }
+
+  .navbar__desktop a:hover { color: var(--color-navy); }
+
+  .navbar__desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .navbar__findstore--desktop {
+    font-size: 0.85rem;
+    color: #555;
+  }
+
+  .navbar__logo img { width: 52px; height: 52px; }
+
+
+  /* ========================================================
+     ปรับปรุงโครงสร้างตามที่ต้องการ (Full Width Layout)
+     ======================================================== */
+
+  /* 1. ยกเลิก Container บีบขวา-ซ้าย เพื่อให้ขยายเต็มจอ 100% */
+  .hero-bar, .cards {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* 2. ปรับตัว Hero bar (It's a date) ให้ชิดติด Header และไม่มน */
+  .hero-bar { 
+    margin-top: 0;       /* ดึงขึ้นไปชิดติดขอบล่างของ navbar พอดี */
+    margin-bottom: 0;    /* เอา margin ล่างออกเพื่อให้ cards ต่อเนี่องกันสวยงาม */
+    border-radius: 0;    /* เอาความมนออก เป็นเหลี่ยมเต็มจอ */
+    padding: 24px 48px; 
+  }
+
+  /* 3. จัดการระยะห่างระหว่างกลุ่ม Card */
+  .cards {
+    gap: 24px;          /* เพิ่มช่องว่าง (เว้นขอบบน-ล่าง) ระหว่าง Card แต่ละใบ */
+    margin-top: 24px;    /* เพิ่มระยะห่างระหว่าง Hero Bar กับ Card ใบแรก */
+    margin-bottom: 40px; /* ระยะห่างก่อนถึง Footer */
+  }
+
+  /* 4. ปรับแต่ละ Card ให้เหลี่ยมเต็มจอ และจัดตัวอักษรให้อยู่ตรงกลางกึ่งกลาง */
+  .card {
+    border-radius: 0;    /* เอาความมนของตัวการ์ดออกทั้งหมด */
+  }
+
+  .card__image { height: 480px; }
+
+  .card__body { 
+    padding: 80px 72px; 
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  /* Footer: ซ่อน accordion ทำเป็น grid แทน */
+  .footer { padding: 48px 32px 32px; }
+
+  .footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  /* ซ่อน details behavior บน tablet — แสดงทุก list เสมอ */
+  .footer__group {
+    border-bottom: none;
+  }
+
+  details.footer__group[open] .footer__list,
+  .footer__group .footer__list {
+    display: flex !important;
+  }
+
+  .footer__heading {
+    padding: 0 0 12px 0;
+    cursor: default;
+    pointer-events: none;      /* กดไม่ได้บน tablet+ */
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  /* ซ่อนลูกศร */
+  .footer__heading::after { display: none; }
+
+
+  /* 5. จำกัดความกว้างของเนื้อหา Footer เพื่อไม่ให้กระจายหลุดขอบจอเกินไป */
+  .footer, .footnote {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 60px 48px 40px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer__nav {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
