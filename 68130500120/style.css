@@ -123,6 +123,7 @@ hr { border: none; }
   width: 44px;
   height: 44px;
   object-fit: contain;
+  border-radius: 50%;
 }
 
 /* ===== Hamburger (3 เส้น) ===== */
@@ -157,7 +158,7 @@ hr { border: none; }
 .navbar__menu {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 80%;
   max-width: 320px;
   height: 100vh;
@@ -167,7 +168,7 @@ hr { border: none; }
   flex-direction: column;
   gap: 20px;
   padding: 24px 32px;
-  transform: translateX(-100%);   /* ซ่อนไว้ซ้าย */
+  transform: translateX(100%);   /* ซ่อนไว้ซ้าย */
   transition: transform 0.3s ease;
 }
 
@@ -420,23 +421,22 @@ details[open] > .footer__heading::after {
 }
 
 
-/* ================================
+/* ========================================================
    TABLET — min-width: 600px
-   ================================ */
+   (ควบคุมหน้าจอแท็บเล็ต ให้ฟุตเตอร์หุบเป็น Accordion เหมือนมือถือ)
+   ======================================================== */
 @media (min-width: 600px) {
 
   .navbar { padding: 0 32px; }
 
   .hero-bar {
-    flex-direction: row;       /* Tablet: text + button แนวนอน */
+    flex-direction: row;       
     gap: 24px;
     padding: 20px 32px;
   }
 
   /* card: รูป 50% + text 50% แนวนอน */
   .card { flex-direction: row; }
-
-  /* card--reverse: text ก่อน รูปหลัง */
   .card--reverse { flex-direction: row-reverse; }
 
   .card__image {
@@ -448,43 +448,43 @@ details[open] > .footer__heading::after {
     width: 50%;
     padding: 60px 56px;
     justify-content: center;
-    /* เปลี่ยนจากคำสั่งเดิมให้เนื้อหาจัดอยู่กึ่งกลางและเว้นขอบสวยงามแบบ Starbucks */
     align-items: center; 
     text-align: center;
   }
   
+  .card__title, .card__desc, .card__body .btn {
+    max-width: 460px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-
+  /* ปล่อยให้สไตล์ยุบขยายทำงานบน Tablet โดยคงเหลือแค่สไตล์ Legal links แนวนอน */
   .footer__social { border-top: 1px solid #e0e0e0; }
 
-  /* Legal links แนวนอนบน tablet+ */
-  .footer__legal {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px 24px;
-  }
-}
+
+} /* <-- ปิดปีกกาของ Tablet */
 
 
-/* ================================
+/* ========================================================
    DESKTOP — min-width: 1024px
-   ================================ */
+   (ควบคุมหน้าจอคอมพิวเตอร์ ให้กางฟุตเตอร์ออกเป็น 5 คอลัมน์ทันที)
+   ======================================================== */
 @media (min-width: 1024px) {
 
-  /* ให้ Navbar มีขอบด้านข้างเท่าเดิมเพื่อความสวยงาม หรือจะเปลี่ยนตามเนื้อหาก็ได้ */
   .navbar { padding: 0 48px; }
 
   /* ซ่อน hamburger บน desktop */
   .navbar__hamburger { display: none; }
 
-  /* แสดง desktop nav — ชิดซ้ายถัดจาก logo */
+  /* แสดง desktop nav */
   .navbar__desktop {
     display: flex;
     gap: 32px;
     font-weight: bold;
     font-size: 0.95rem;
-    margin-left: 32px;
-    margin-right: auto;
+    margin-left: 32px;   
+    margin-right: auto;  
   }
 
   .navbar__desktop a:hover { color: var(--color-navy); }
@@ -500,14 +500,7 @@ details[open] > .footer__heading::after {
     color: #555;
   }
 
-  .navbar__logo img { width: 52px; height: 52px; }
-
-
-  /* ========================================================
-     ปรับปรุงโครงสร้างตามที่ต้องการ (Full Width Layout)
-     ======================================================== */
-
-  /* 1. ยกเลิก Container บีบขวา-ซ้าย เพื่อให้ขยายเต็มจอ 100% */
+  /* Layout ขยายเต็มจอแบนชิดขอบ และเว้นระยะห่างบนล่าง */
   .hero-bar, .cards {
     max-width: 100%;
     width: 100%;
@@ -515,24 +508,21 @@ details[open] > .footer__heading::after {
     margin-right: 0;
   }
 
-  /* 2. ปรับตัว Hero bar (It's a date) ให้ชิดติด Header และไม่มน */
   .hero-bar { 
-    margin-top: 0;       /* ดึงขึ้นไปชิดติดขอบล่างของ navbar พอดี */
-    margin-bottom: 0;    /* เอา margin ล่างออกเพื่อให้ cards ต่อเนี่องกันสวยงาม */
-    border-radius: 0;    /* เอาความมนออก เป็นเหลี่ยมเต็มจอ */
+    margin-top: 0;       
+    margin-bottom: 0;    
+    border-radius: 0;    
     padding: 24px 48px; 
   }
 
-  /* 3. จัดการระยะห่างระหว่างกลุ่ม Card */
   .cards {
-    gap: 24px;          /* เพิ่มช่องว่าง (เว้นขอบบน-ล่าง) ระหว่าง Card แต่ละใบ */
-    margin-top: 24px;    /* เพิ่มระยะห่างระหว่าง Hero Bar กับ Card ใบแรก */
-    margin-bottom: 40px; /* ระยะห่างก่อนถึง Footer */
+    gap: 24px;          
+    margin-top: 24px;    
+    margin-bottom: 40px; 
   }
 
-  /* 4. ปรับแต่ละ Card ให้เหลี่ยมเต็มจอ และจัดตัวอักษรให้อยู่ตรงกลางกึ่งกลาง */
   .card {
-    border-radius: 0;    /* เอาความมนของตัวการ์ดออกทั้งหมด */
+    border-radius: 0;    
   }
 
   .card__image { height: 480px; }
@@ -543,51 +533,45 @@ details[open] > .footer__heading::after {
     align-items: center; 
   }
 
-  /* Footer: ซ่อน accordion ทำเป็น grid แทน */
-  .footer { padding: 48px 32px 32px; }
+  .footer { 
+    padding: 60px 48px 40px; 
+  }
 
+  /* สั่งแผ่เป็น 5 คอลัมน์แนวตั้งขนานกัน */
   .footer__nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr); 
     gap: 32px;
     margin-bottom: 32px;
   }
 
-  /* ซ่อน details behavior บน tablet — แสดงทุก list เสมอ */
   .footer__group {
-    border-bottom: none;
+    border-bottom: none; /* เอาเส้นคั่นในมือถือออก */
   }
 
-  details.footer__group[open] .footer__list,
-  .footer__group .footer__list {
-    display: flex !important;
+  /* 💡 จุดสำคัญ: สั่งบังคับให้ลิสต์ (ul) แสดงออกมาตรง ๆ เลย ไม่ต้องง้อสถานะกดคลิกของ details */
+  .footer__list {
+    display: flex !important;   /* ปลดล็อกการโดนซ่อนของแท็ก <details> */
+    flex-direction: column;     /* เรียงลิงก์ต่อกันเป็นแนวตั้งลงมา */
+    gap: 12px;
+    padding-top: 12px;
   }
 
+  /* จัดหัวข้อให้อยู่ในสภาพตัวอักษรธรรมดา ไม่ใช่ปุ่มกด */
   .footer__heading {
-    padding: 0 0 12px 0;
+    padding: 0;
     cursor: default;
-    pointer-events: none;      /* กดไม่ได้บน tablet+ */
-    font-size: 0.8rem;
+    pointer-events: none;       /* ล็อกไว้ไม่ให้ผู้ใช้คลิกหุบบน Desktop */
+    font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #888;
+    color: #333;                
+    font-weight: bold;
+    display: block;             
   }
 
-  /* ซ่อนลูกศร */
-  .footer__heading::after { display: none; }
-
-
-  /* 5. จำกัดความกว้างของเนื้อหา Footer เพื่อไม่ให้กระจายหลุดขอบจอเกินไป */
-  .footer, .footnote {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    padding: 60px 48px 40px;
-    border-top: 1px solid #e0e0e0;
+  /* ซ่อนลูกศร › ออกไปจากหน้าจอ Desktop */
+  .footer__heading::after { 
+    display: none !important; 
   }
-
-  .footer__nav {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
+} /* <-- ปิดปีกกาของ Desktop */
